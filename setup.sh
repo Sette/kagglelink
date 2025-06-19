@@ -4,16 +4,16 @@ set -e
 
 echo "===================================="
 echo "kagglelink setup tool"
-echo "For more information check out: https://github.com/bhdai/kagglelink"
+echo "For more information check out: https://github.com/sette/kagglelink"
 echo "===================================="
 
 # Default repository URL and branch
-REPO_URL="https://github.com/bhdai/kagglelink.git"
+REPO_URL="https://github.com/sette/kagglelink.git"
 INSTALL_DIR="/tmp/kagglelink"
 
 # Function to display usage information
 usage() {
-    echo "Usage: curl -sS https://raw.githubusercontent.com/bhdai/kagglelink/refs/heads/main/setup.sh | bash -s -- -k <your_public_key_url> -t <your_zrok_token>"
+    echo "Usage: curl -sS https://raw.githubusercontent.com/sette/kagglelink/refs/heads/main/setup.sh | bash -s -- -k <your_public_key_url> -t <your_zrok_token>"
     echo ""
     echo "Options:"
     echo "  -k, --keys-string     Key string"
