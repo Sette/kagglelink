@@ -10,12 +10,14 @@ fi
 AUTH_KEYS_STRING=$1
 
 setup_ssh_directory() {
-    mkdir -p /kaggle/working/.ssh
+    echo "Setting up SSH directory in user's home..."
+    # If running as root, $HOME/.ssh becomes /root/.ssh
+    local ssh_dir_path="$HOME/.ssh"
 
     if [ -n "$AUTH_KEYS_STRING" ]; then
-        echo "$AUTH_KEYS_STRING" > /kaggle/working/.ssh/authorized_keys
-        chmod 700 /kaggle/working/.ssh
-        chmod 600 /kaggle/working/.ssh/authorized_keys
+        echo "$AUTH_KEYS_STRING" > $ssh_dir_path/authorized_keys
+        chmod 700 $ssh_dir_path
+        chmod 600 $ssh_dir_path/authorized_keys
     else
         echo "No SSH public key provided. Please set AUTH_KEYS_STRING."
         exit 1
