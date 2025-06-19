@@ -16,7 +16,7 @@ usage() {
     echo "Usage: curl -sS https://raw.githubusercontent.com/bhdai/kagglelink/refs/heads/main/setup.sh | bash -s -- -k <your_public_key_url> -t <your_zrok_token>"
     echo ""
     echo "Options:"
-    echo "  -k, --keys-url URL    URL to your authorized_keys file"
+    echo "  -k, --keys-string     Key string"
     echo "  -t, --token TOKEN     Your zrok token"
     echo "  -h, --help            Display this help message"
     exit 1
@@ -26,7 +26,7 @@ usage() {
 while [[ $# -gt 0 ]]; do
     case $1 in
         -k|--keys-url)
-            AUTH_KEYS_URL="$2"
+            AUTH_KEYS_STRING="$2"
             shift 2
             ;;
         -t|--token)
@@ -44,7 +44,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Check for required parameters
-if [ -z "$AUTH_KEYS_URL" ]; then
+if [ -z "$AUTH_KEYS_STRING" ]; then
     echo "Error: Public key URL (-k or --keys-url) is required"
     usage
 fi
@@ -69,7 +69,7 @@ echo "⏳ Making scripts executable..."
 chmod +x setup_kaggle_zrok.sh start_zrok.sh
 
 echo "⏳ Setting up SSH with your public keys..."
-./setup_kaggle_zrok.sh "$AUTH_KEYS_URL"
+./setup_kaggle_zrok.sh "$AUTH_KEYS_STRING"
 
 echo "⏳ Starting zrok service with your token..."
 ./start_zrok.sh "$ZROK_TOKEN"
