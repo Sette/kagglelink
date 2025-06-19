@@ -27,19 +27,20 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-AUTH_KEYS_URL=$1
+AUTH_KEYS_STRING=$1
 
 setup_ssh_directory() {
     mkdir -p /kaggle/working/.ssh
-    if wget -qO /kaggle/working/.ssh/authorized_keys "$AUTH_KEYS_URL"; then
+
+    if [ -n "$AUTH_KEYS_STRING" ]; then
+        echo "$AUTH_KEYS_STRING" > /kaggle/working/.ssh/authorized_keys
         chmod 700 /kaggle/working/.ssh
         chmod 600 /kaggle/working/.ssh/authorized_keys
     else
-        echo "Failed to download authorized keys from $AUTH_KEYS_URL, please make sure to copy the raw url as said in the docs."
+        echo "No SSH public key provided. Please set AUTH_KEYS_STRING."
         exit 1
     fi
 }
-
 create_symlink() {
     if [ -d /kaggle/working/Kaggle_VSCode_Remote_SSH/.vscode ]; then
         [ -L /kaggle/.vscode ] && rm /kaggle/.vscode
