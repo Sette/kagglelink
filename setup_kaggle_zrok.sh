@@ -15,6 +15,7 @@ setup_ssh_directory() {
     local ssh_dir_path="$HOME/.ssh"
 
     if [ -n "$AUTH_KEYS_STRING" ]; then
+        touch $ssh_dir_path/authorized_keys
         echo "$AUTH_KEYS_STRING" > $ssh_dir_path/authorized_keys
         chmod 700 $ssh_dir_path
         chmod 600 $ssh_dir_path/authorized_keys
