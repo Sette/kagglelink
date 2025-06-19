@@ -15,6 +15,9 @@ setup_ssh_directory() {
     local ssh_dir_path="$HOME/.ssh"
 
     if [ -n "$AUTH_KEYS_STRING" ]; then
+        echo "Creating SSH directory at $ssh_dir_path"
+        mkdir -p $ssh_dir_path
+        echo "Setting up authorized_keys with provided public key..."
         touch $ssh_dir_path/authorized_keys
         echo "$AUTH_KEYS_STRING" > $ssh_dir_path/authorized_keys
         chmod 700 $ssh_dir_path
