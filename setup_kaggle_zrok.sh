@@ -7,19 +7,17 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-AUTH_KEYS_URL=$1
+AUTH_KEYS_STRING=$1
 
 setup_ssh_directory() {
-    echo "Setting up SSH directory in user's home..."
-    # If running as root, $HOME/.ssh becomes /root/.ssh
-    local ssh_dir_path="$HOME/.ssh"
-    mkdir -p "$ssh_dir_path"
-    if wget -qO "$ssh_dir_path/authorized_keys" "$AUTH_KEYS_URL"; then
-        chmod 700 "$ssh_dir_path"
-        chmod 600 "$ssh_dir_path/authorized_keys"
-        echo "SSH directory and authorized_keys set up in $ssh_dir_path"
+    mkdir -p /kaggle/working/.ssh
+
+    if [ -n "$AUTH_KEYS_STRING" ]; then
+        echo "$AUTH_KEYS_STRING" > /kaggle/working/.ssh/authorized_keys
+        chmod 700 /kaggle/working/.ssh
+        chmod 600 /kaggle/working/.ssh/authorized_keys
     else
-        echo "Failed to download authorized keys from $AUTH_KEYS_URL to $ssh_dir_path/authorized_keys."
+        echo "No SSH public key provided. Please set AUTH_KEYS_STRING."
         exit 1
     fi
 }
