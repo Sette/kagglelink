@@ -14,7 +14,7 @@ kagglelink allows you to ssh into Kaggle and leverage those kaggle resources, or
 
 2. Ensure your account is on the Starter plan to utilize NetFoundry's public Zrok instance.
 
-3. You need to upload your public key to a github repository or a public file hosting service
+3. You need to put your public key to <public_key_string> argument.
 
 ## Quick Setup
 
