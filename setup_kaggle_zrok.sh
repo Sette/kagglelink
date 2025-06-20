@@ -112,8 +112,8 @@ EOT
 
 install_packages() {
     echo "Installing openssh-server..."
-    sudo apt-get update
-    sudo apt-get install -y openssh-server
+    apt-get update
+    apt-get install -y openssh-server
 }
 
 install_zrok() {
