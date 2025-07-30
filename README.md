@@ -40,7 +40,7 @@ Wait for the setup to finish, you should see something like this at the end
 Generate a new SSH key pair on your local machine (if you haven't already):
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "kaggle_remote_ssh" -f ~/.ssh/kaggle_rsa
+ssh-keygen -t rsa -b 4096 -C "kaggle_remote_ssh" -f ~/.ssh/id_ed25519
 ```
 
 Create a github repository and push the `~/.ssh/kaggle_rsa.pub` file to it. Make sure the repository is public. Once finished, you can get the public key URL by navigating to the file in your repository and clicking on the "Raw" button. 
