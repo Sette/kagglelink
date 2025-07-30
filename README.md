@@ -97,7 +97,7 @@ Host Kaggle
     HostName 127.0.0.1
     UserKnownHostsFile /dev/null
     StrictHostKeyChecking no
-    IdentityFile ~/.ssh/kaggle_rsa
+    IdentityFile ~/.ssh/id_ed25519
     Port 9191
     User root
 ```
