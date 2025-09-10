@@ -23,12 +23,12 @@ One line command setup?
 Paste this into Kaggle cell
 
 ```bash
-!curl -sS https://raw.githubusercontent.com/bhdai/kagglelink/refs/heads/main/setup.sh | bash -s -- -k <public_key_string> -t <zrok_token>
+!curl -sS https://raw.githubusercontent.com/sette/kagglelink/refs/heads/main/setup.sh | bash -s -- -k <public_key_string> -t <zrok_token>
 ```
 
 > [!NOTE]
 >
-> replace <public_key_url> with the URL of your public key file and <zrok_token> with your Zrok token.
+> replace <public_key_string> with the public_key content of your public key file and <zrok_token> with your Zrok token.
 
 
 Wait for the setup to finish, you should see something like this at the end
@@ -42,12 +42,6 @@ Generate a new SSH key pair on your local machine (if you haven't already):
 ```bash
 ssh-keygen -t rsa -b 4096 -C "kaggle_remote_ssh" -f ~/.ssh/id_ed25519
 ```
-
-Create a github repository and push the `~/.ssh/kaggle_rsa.pub` file to it. Make sure the repository is public. Once finished, you can get the public key URL by navigating to the file in your repository and clicking on the "Raw" button. 
-
-![Image](https://github.com/user-attachments/assets/ec9a884c-1c97-4be6-bd6d-03ac5dd16de7)
-
-Copy the URL from your browser's address bar. It usually takes the form like this `https://raw.githubusercontent.com/<username>/<repo_name>/refs/heads/main/<file_path>`
 
 ### How to get zrok token?
 
